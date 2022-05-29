@@ -1,0 +1,28 @@
+[{
+  "_id": {
+    "$oid": "628b648e1aeef6454497d03d"
+  },
+  "username": "mars",
+  "email": "mars@example.com",
+  "hashed_password": "$2b$12$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW",
+  "employe": true,
+  "fullname": "Mars M"
+},{
+  "_id": {
+    "$oid": "628bd64ba827d597870afb32"
+  },
+  "username": "Mark",
+  "fullname": "Mark T",
+  "email": "mark@example.com",
+  "hashed_password": "$2b$12$geBYR7O/hZSCELAOl/IKyOAXMNI2hnhetHHREO6/kGEB9qYVQf5KG",
+  "employe": false
+},{
+  "_id": {
+    "$oid": "628bd9590d11ccd47745c938"
+  },
+  "username": "Joe",
+  "fullname": "J Joe",
+  "email": "joe@example.com",
+  "hashed_password": "$2b$12$jrFIo28x.pSFmdCqkmjL.uCcMQUKR23OBwqnJNS2lIHJ.nmMb6.ky",
+  "employe": false
+}]
