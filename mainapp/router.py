@@ -9,6 +9,8 @@ from typing import List
 from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy.orm import Session
 
+from fastapi.security import HTTPBasicCredentials
+
 from . import crud, models, schemas
 from .database import SessionLocal, engine
 
@@ -22,9 +24,7 @@ async def hello():
     
 
 
-# @router.get("/users/me")
-# def read_current_user(credentials: HTTPBasicCredentials = Depends(security)):
-#     return {"username": credentials.username, "password": credentials.password}
+
 
 
 
@@ -39,6 +39,20 @@ def get_db():
         yield db
     finally:
         db.close()
+
+@router.get("/users/me/", response_model=schemas.User)
+def read_users_me(token: schemas.User = Depends(auth_alg.get_current_user), db: Session = Depends(get_db)):
+    user = get_user_by_email(db, email=token)
+    if user is None:
+        raise credentials_exception
+    return user
+    # return current_user
+
+
+# @router.get("/users/me")
+# def read_current_user(credentials: HTTPBasicCredentials = Depends(auth_alg.get_current_username), db: Session = Depends(get_db)):
+#     # db_user = crud.get_user_by_email(db, email=credentials.email)
+#     return {"email": credentials.email, "password": credentials.password}
 
 
 @router.post("/users/", response_model=schemas.User)
